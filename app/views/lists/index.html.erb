@@ -1,8 +1,9 @@
 <h1><u>List Index </u></h1>
 
 <h4>
-  <% @list.each do |list| %>
-   <p> <%= list.name %></p>
+  <% @lists.each do |list| %>
+   <p> <%= link_to list.name, list_path(list) %></p>
+
   <% end %>
 </h4>
 

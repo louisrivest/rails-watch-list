@@ -1,4 +1,12 @@
 <h1> <%= @list.name %></h1>
 
+ <% Bookmark.where(list_id: @list).each do |bookmark| %>
+  <p><%= Movie.find(bookmark.movie_id).title %> </p>
+   <%= link_to '+',
+          bookmark_path(bookmark),
+          data: { turbo_method: :delete, turbo_confirm: 'Really?' },
+          class: 'card-remove-link' %>
+  <% end %>
 
-<%= link_to "Add a movie", new_list_bookmark_path(@list), class: "btn btn-ghost"%>
+
+<%= link_to "Add a bookmark", new_list_bookmarks_path(@list), class: "btn btn-ghost"%>
